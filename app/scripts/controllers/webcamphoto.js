@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name fileTaBobineApp.controller:AboutCtrl
+ * @name fileTaBobineApp.controller:WebcamphotoCtrl
  * @description
- * # AboutCtrl
+ * # WebcamphotoCtrl
  * Controller of the fileTaBobineApp
  */
 angular.module('fileTaBobineApp')
-  .controller('AboutCtrl', function () {
+  .controller('WebcamphotoCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

@@ -19,17 +19,27 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
+      .when('/main', {
+        templateUrl: 'views/page1.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/story-selector', {
+        templateUrl: 'views/page2.html',
+        controller: 'StoryselectorCtrl',
+        controllerAs: 'storyselector'
+      })
+      .when('/webcam-photo/:id', {
+        templateUrl: 'views/page3.html',
+        controller: 'WebcamphotoCtrl',
+        controllerAs: 'webcamphoto'
+      })
+      .when('/end', {
+        templateUrl: 'views/page3.html',
+        controller: 'PrintCtrl',
+        controllerAs: 'print'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/main'
       });
   });
