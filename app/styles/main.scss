@@ -26,13 +26,35 @@ body {
   -moz-transform:rotateY(180deg); /* Firefox */
 }
 
-.story-hover {
+#photo {
+  filter: grayscale(100%);
+}
+
+#story-mask {
   position: absolute;
   left: 0;
+  right: 0;
   top: 0;
 }
 
 .container {
   margin: 0;
   padding: 0;
+}
+
+// Hide output
+.output {
+  display: none;
+}
+
+// show ouput for print
+@media print {
+  .output {
+    display: block;
+  }
+
+  // hide video
+  #video, #story-mask {
+    display: none;
+  }
 }

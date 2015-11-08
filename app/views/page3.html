@@ -3,12 +3,11 @@
     <button id="startbutton">Take photo</button>
 </div>
 
-<img ng-src="{{ webcamphoto.imageSrc }}" class="story-hover">
+<img ng-src="{{ webcamphoto.imageSrc }}" class="story-hover" id="story-mask">
 
 <!-- hidden -->
-<canvas id="canvas">
-</canvas>
+<canvas id="canvas"></canvas>
 
 <div class="output">
-<img id="photo" alt="The screen capture will appear in this box.">
+    <img id="photo" alt="The screen capture will appear in this box.">
 </div>

@@ -107,6 +107,9 @@ angular
           canvas.height = height;
           context.drawImage(video, 0, 0, width, height);
 
+          var img = document.getElementById("story-mask");
+          context.drawImage(img, 0, 0, width, height);
+
           var data = canvas.toDataURL('image/png');
           photo.setAttribute('src', data);
         }
