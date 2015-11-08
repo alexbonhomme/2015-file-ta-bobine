@@ -1,3 +1,5 @@
+(function () {
+
 'use strict';
 
 /**
@@ -9,11 +11,15 @@
  */
 angular
     .module('fileTaBobineApp')
-    .controller('WebcamphotoCtrl', function () {
+    .controller('WebcamphotoCtrl', WebcamphotoCtrl);
+
+WebcamphotoCtrl.$inject = ['$window', '$routeParams'];
+
+function WebcamphotoCtrl ($window, $routeParams) {
 
     var vm = this;
 
-    var width = 1440;    // We will scale the photo width to this
+    var width = 1680;    // We will scale the photo width to this
     var height = 0;     // This will be computed based on the input stream
 
     var streaming = false;
@@ -23,10 +29,28 @@ angular
     var photo = null;
     var startbutton = null;
 
-    startup();
+    init();
 
-    vm.imageSrc = "images/UIPage3.png";
+    function init () {
+        vm.imageSrc = getMaskSrc($routeParams.id);
 
+        startup();
+    }
+
+    function getMaskSrc (maskId) {
+        switch (maskId) {
+            case "0":
+                return "images/Fond1.png";
+            case "1":
+                return "images/Fond2.png";
+            case "2":
+                return "images/Fond3.png";
+            case "3":
+                return "images/Fond4.png";
+            case "4":
+                return "images/Fond5.png";
+        }
+    }
 
     function startup() {
         video = document.getElementById('video');
@@ -34,24 +58,24 @@ angular
         photo = document.getElementById('photo');
         startbutton = document.getElementById('startbutton');
 
-        navigator.getMedia = (
-            navigator.getUserMedia ||
-            navigator.webkitGetUserMedia ||
-            navigator.mozGetUserMedia ||
-            navigator.msGetUserMedia
+        $window.navigator.getMedia = (
+            $window.navigator.getUserMedia ||
+            $window.navigator.webkitGetUserMedia ||
+            $window.navigator.mozGetUserMedia ||
+            $window.navigator.msGetUserMedia
         );
 
-        navigator.getMedia(
+        $window.navigator.getMedia(
             {
                 video: true,
                 audio: false
             },
             function (stream) {
-                if (navigator.mozGetUserMedia) {
+                if ($window.navigator.mozGetUserMedia) {
                   video.mozSrcObject = stream;
                 }
                 else {
-                  var vendorURL = window.URL || window.webkitURL;
+                  var vendorURL = $window.URL || $window.webkitURL;
                   video.src = vendorURL.createObjectURL(stream);
                 }
 
@@ -120,4 +144,5 @@ angular
         }
     }
 
-  });
+  }
+})();
