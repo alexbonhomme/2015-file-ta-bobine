@@ -8,10 +8,14 @@
  * Controller of the fileTaBobineApp
  */
 angular.module('fileTaBobineApp')
-  .controller('PrintCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('PrintCtrl', function ($timeout, $location) {
+    $timeout(function () {
+        $location.path('/main');
+    }, 10000);
+
+    var vm = this;
+
+    vm.backToStart = function () {
+        $location.path('/main');
+    };
   });
