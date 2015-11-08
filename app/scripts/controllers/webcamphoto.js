@@ -143,11 +143,16 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout, $location) {
 
         // draw fiche
         var context = canvas.getContext('2d');
+
         var img = document.getElementById("story-fiche");
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         // draw video
-        context.drawImage(video, 699, 117, 392, 245);
+        splitH(context);
+
+        context.drawImage(video, 149, 117, 392, 245);
+
+        splitH(context);
 
         // draw mask
         var img = document.getElementById("story-mask");
@@ -157,11 +162,17 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout, $location) {
         photo.setAttribute('src', data);
     }
 
+    function splitH (ctx) {
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.scale(-1, 1);
+        ctx.translate(-canvas.width / 2, -canvas.height / 2);
+    }
+
     function print () {
         video.pause();
         takepicture();
 
-        console.log("print!");
+        // console.log("print!");
         $timeout(function () {
             $window.print();
             $location.path('/end')
