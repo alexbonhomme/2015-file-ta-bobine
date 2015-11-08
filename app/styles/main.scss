@@ -42,6 +42,10 @@ body {
   width: 100%;
 }
 
+#story-fiche {
+  display: none;
+}
+
 .container {
   margin: 0;
   padding: 0;
@@ -51,7 +55,7 @@ body {
 .output {
   display: none;
   #photo {
-    filter: grayscale(100%);
+    // filter: grayscale(100%);
     width: 100%;
   }
 

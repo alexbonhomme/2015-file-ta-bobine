@@ -22,19 +22,9 @@
 
 <!-- always hidden -->
 <canvas id="canvas"></canvas>
+<img ng-src="{{ webcamphoto.story.fiche }}" id="story-fiche">
 
 <!-- Card to print -->
 <div class="output">
-    <div class="row">
-        <div class="col-sm-6 story-text">
-            {{ webcamphoto.story.storyText }}
-        </div>
-        <div class="col-sm-6">
-            <img id="photo">
-            <p>
-                {{ webcamphoto.story.machineText }}
-            </p>
-        </div>
-    </div>
-
+    <img id="photo">
 </div>

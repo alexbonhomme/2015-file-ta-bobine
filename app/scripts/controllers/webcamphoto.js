@@ -33,32 +33,27 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout) {
         {
             titleSrc: "images/Titre1.png",
             maskSrc: "images/Fond1.png",
-            storyText: "récit 1",
-            machineText: "machine 1"
+            fiche: "images/Fiche1.png"
         },
         {
             titleSrc: "images/Titre2.png",
             maskSrc: "images/Fond2.png",
-            storyText: "",
-            machineText: ""
+            fiche: "images/Fiche2.png"
         },
         {
             titleSrc: "images/Titre3.png",
             maskSrc: "images/Fond3.png",
-            storyText: "",
-            machineText: ""
+            fiche: "images/Fiche3.png"
         },
         {
             titleSrc: "images/Titre4.png",
             maskSrc: "images/Fond4.png",
-            storyText: "",
-            machineText: ""
+            fiche: "images/Fiche4.png"
         },
         {
             titleSrc: "images/Titre5.png",
             maskSrc: "images/Fond5.png",
-            storyText: "",
-            machineText: ""
+            fiche: "images/Fiche5.png"
         },
     ];
 
@@ -130,7 +125,6 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout) {
         clearphoto();
     }
 
-    // USELESS
     function clearphoto() {
         var context = canvas.getContext('2d');
         context.fillStyle = "#AAA";
@@ -142,22 +136,26 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout) {
 
     function takepicture() {
         var context = canvas.getContext('2d');
-        if (width && height) {
-          canvas.width = width;
-          canvas.height = height;
-          context.drawImage(video, 0, 0, width, height);
 
-          var img = document.getElementById("story-mask");
-          context.drawImage(img, 0, 0, width, height);
+        canvas.width = 2480;
+        canvas.height = 1748;
 
-          var data = canvas.toDataURL('image/png');
-          photo.setAttribute('src', data);
+        // draw fiche
+        var context = canvas.getContext('2d');
+        var img = document.getElementById("story-fiche");
+        context.drawImage(img, 0, 0, 2480, 1748);
 
-          video.pause();
-        }
-        else {
-          clearphoto();
-        }
+        // draw video
+        context.drawImage(video, 1280, 160, 1120, 700);
+
+        // draw mask
+        var img = document.getElementById("story-mask");
+        context.drawImage(img, 1280, 160, 1120, 700);
+
+        var data = canvas.toDataURL('image/png');
+        photo.setAttribute('src', data);
+
+        // video.pause();
     }
 
     function print () {
