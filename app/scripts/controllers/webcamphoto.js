@@ -13,9 +13,9 @@ angular
     .module('fileTaBobineApp')
     .controller('WebcamphotoCtrl', WebcamphotoCtrl);
 
-WebcamphotoCtrl.$inject = ['$window', '$routeParams', '$timeout'];
+WebcamphotoCtrl.$inject = ['$window', '$routeParams', '$timeout', '$location'];
 
-function WebcamphotoCtrl ($window, $routeParams, $timeout) {
+function WebcamphotoCtrl ($window, $routeParams, $timeout, $location) {
 
     var vm = this;
 
@@ -165,6 +165,7 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout) {
         console.log("print!");
         $timeout(function () {
             $window.print();
+            $location.path('/end')
         }, 500);
     }
 
