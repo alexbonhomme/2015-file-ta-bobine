@@ -137,20 +137,20 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout) {
     function takepicture() {
         var context = canvas.getContext('2d');
 
-        canvas.width = 2480;
-        canvas.height = 1748;
+        canvas.width = 1240;
+        canvas.height = 874;
 
         // draw fiche
         var context = canvas.getContext('2d');
         var img = document.getElementById("story-fiche");
-        context.drawImage(img, 0, 0, 2480, 1748);
+        context.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         // draw video
-        context.drawImage(video, 1280, 160, 1120, 700);
+        context.drawImage(video, 640, 80, 560, 350);
 
         // draw mask
         var img = document.getElementById("story-mask");
-        context.drawImage(img, 1280, 160, 1120, 700);
+        context.drawImage(img, 640, 80, 560, 350);
 
         var data = canvas.toDataURL('image/png');
         photo.setAttribute('src', data);
