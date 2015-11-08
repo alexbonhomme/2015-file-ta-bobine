@@ -74,12 +74,17 @@ body {
 
   .bobines {
     padding-top: 20px;
-  }
+  } 
   
   img {
     max-width: 100%;
     height: auto;
   }
+}
+
+.page4 {
+  background: url('../images/UIPage4.png');
+  background-size: cover;
 }
 
 /* Responsive: Portrait tablets and up */
