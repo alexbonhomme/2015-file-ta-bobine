@@ -35,7 +35,7 @@ angular
         controllerAs: 'webcamphoto'
       })
       .when('/end', {
-        templateUrl: 'views/page3.html',
+        templateUrl: 'views/page4.html',
         controller: 'PrintCtrl',
         controllerAs: 'print'
       })
