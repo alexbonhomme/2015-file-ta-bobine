@@ -19,7 +19,7 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout) {
 
     var vm = this;
 
-    var width = 1680;    // We will scale the photo width to this
+    var width = 1240;    // We will scale the photo width to this
     var height = 0;     // This will be computed based on the input stream
 
     var streaming = false;
@@ -115,8 +115,9 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout) {
 
                 video.setAttribute('width', width);
                 video.setAttribute('height', height);
-                canvas.setAttribute('width', width);
-                canvas.setAttribute('height', height);
+
+                canvas.setAttribute('width', 1240);
+                canvas.setAttribute('height', 874);
 
                 streaming = true;
             }
