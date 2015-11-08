@@ -13,9 +13,9 @@ angular
     .module('fileTaBobineApp')
     .controller('WebcamphotoCtrl', WebcamphotoCtrl);
 
-WebcamphotoCtrl.$inject = ['$window', '$routeParams'];
+WebcamphotoCtrl.$inject = ['$window', '$routeParams', '$timeout'];
 
-function WebcamphotoCtrl ($window, $routeParams) {
+function WebcamphotoCtrl ($window, $routeParams, $timeout) {
 
     var vm = this;
 
@@ -29,34 +29,55 @@ function WebcamphotoCtrl ($window, $routeParams) {
     var photo = null;
     var startbutton = null;
 
+    var storyData = [
+        {
+            titleSrc: "images/Titre1.png",
+            maskSrc: "images/Fond1.png",
+            storyText: "récit 1",
+            machineText: "machine 1"
+        },
+        {
+            titleSrc: "images/Titre2.png",
+            maskSrc: "images/Fond2.png",
+            storyText: "",
+            machineText: ""
+        },
+        {
+            titleSrc: "images/Titre3.png",
+            maskSrc: "images/Fond3.png",
+            storyText: "",
+            machineText: ""
+        },
+        {
+            titleSrc: "images/Titre4.png",
+            maskSrc: "images/Fond4.png",
+            storyText: "",
+            machineText: ""
+        },
+        {
+            titleSrc: "images/Titre5.png",
+            maskSrc: "images/Fond5.png",
+            storyText: "",
+            machineText: ""
+        },
+    ];
+
+
+    // Methods
+    vm.print = print;
+
     init();
 
     function init () {
-        vm.imageSrc = getMaskSrc($routeParams.id);
+        vm.story = storyData[parseInt($routeParams.id)];
 
         startup();
-    }
-
-    function getMaskSrc (maskId) {
-        switch (maskId) {
-            case "0":
-                return "images/Fond1.png";
-            case "1":
-                return "images/Fond2.png";
-            case "2":
-                return "images/Fond3.png";
-            case "3":
-                return "images/Fond4.png";
-            case "4":
-                return "images/Fond5.png";
-        }
     }
 
     function startup() {
         video = document.getElementById('video');
         canvas = document.getElementById('canvas');
         photo = document.getElementById('photo');
-        startbutton = document.getElementById('startbutton');
 
         $window.navigator.getMedia = (
             $window.navigator.getUserMedia ||
@@ -106,11 +127,6 @@ function WebcamphotoCtrl ($window, $routeParams) {
             }
         }, false);
 
-        startbutton.addEventListener('click', function (ev) {
-            takepicture();
-            ev.preventDefault();
-        }, false);
-
         clearphoto();
     }
 
@@ -142,6 +158,15 @@ function WebcamphotoCtrl ($window, $routeParams) {
         else {
           clearphoto();
         }
+    }
+
+    function print () {
+        takepicture();
+
+        console.log("print!");
+        $timeout(function () {
+            $window.print();
+        }, 500);
     }
 
   }

@@ -1,13 +1,40 @@
-<div class="camera">
-    <video id="video">Video stream not available.</video>
-    <button id="startbutton">Take photo</button>
+<!-- User inteface -->
+<div class="preview">
+    <!-- webcam flow -->
+    <div class="camera">
+        <video id="video">Video stream not available.</video>
+    </div>
+
+    <!-- mask -->
+    <img ng-src="{{ webcamphoto.story.maskSrc }}" id="story-mask">
+
+    <!-- page title -->
+    <img ng-src="{{ webcamphoto.story.titleSrc }}" class="story-title">
+
+    <!-- user commands -->
+    <a ng-href="#/story-selector" class="user-button">
+        <img src="images/FlecheBack.png" alt="" />
+    </a>
+    <a href="" class="user-button" style="margin-left: 50%;" ng-click="webcamphoto.print()">
+        <img src="images/BoutonCheck.png" alt="" />
+    </a>
 </div>
 
-<img ng-src="{{ webcamphoto.imageSrc }}" id="story-mask">
-
-<!-- hidden -->
+<!-- always hidden -->
 <canvas id="canvas"></canvas>
 
+<!-- Card to print -->
 <div class="output">
-    <img id="photo" alt="The screen capture will appear in this box.">
+    <div class="row">
+        <div class="col-sm-6 story-text">
+            {{ webcamphoto.story.storyText }}
+        </div>
+        <div class="col-sm-6">
+            <img id="photo">
+            <p>
+                {{ webcamphoto.story.machineText }}
+            </p>
+        </div>
+    </div>
+
 </div>
