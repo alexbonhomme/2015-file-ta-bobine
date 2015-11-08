@@ -46,7 +46,7 @@ angular
                 video: true,
                 audio: false
             },
-            function(stream) {
+            function (stream) {
                 if (navigator.mozGetUserMedia) {
                   video.mozSrcObject = stream;
                 }
@@ -112,6 +112,8 @@ angular
 
           var data = canvas.toDataURL('image/png');
           photo.setAttribute('src', data);
+
+          video.pause();
         }
         else {
           clearphoto();

@@ -12,6 +12,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 body {
   padding: 0;
+  background-color: #e74455;
 }
 
 #canvas {
@@ -33,8 +34,9 @@ body {
 #story-mask {
   position: absolute;
   left: 0;
-  right: 0;
   top: 0;
+
+  width: 100%;
 }
 
 .container {
