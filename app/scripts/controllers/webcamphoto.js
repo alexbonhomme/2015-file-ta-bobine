@@ -155,11 +155,10 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout, $location) {
 
         var data = canvas.toDataURL('image/png');
         photo.setAttribute('src', data);
-
-        video.pause();
     }
 
     function print () {
+        video.pause();
         takepicture();
 
         console.log("print!");
