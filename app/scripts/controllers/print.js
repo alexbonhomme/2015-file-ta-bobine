@@ -11,7 +11,7 @@ angular.module('fileTaBobineApp')
   .controller('PrintCtrl', function ($timeout, $location) {
     var timer = $timeout(function () {
         $location.path('/main');
-    }, 10000);
+    }, 30000);
 
     var vm = this;
 
