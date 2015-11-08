@@ -9,13 +9,14 @@
  */
 angular.module('fileTaBobineApp')
   .controller('PrintCtrl', function ($timeout, $location) {
-    $timeout(function () {
+    var timer = $timeout(function () {
         $location.path('/main');
     }, 10000);
 
     var vm = this;
 
     vm.backToStart = function () {
+        $timeout.cancel(timer);
         $location.path('/main');
     };
   });
