@@ -147,7 +147,7 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout, $location) {
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         // draw video
-        context.drawImage(video, 780, 167, 280, 175);
+        context.drawImage(video, 699, 117, 392, 245);
 
         // draw mask
         var img = document.getElementById("story-mask");
@@ -156,7 +156,7 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout, $location) {
         var data = canvas.toDataURL('image/png');
         photo.setAttribute('src', data);
 
-        // video.pause();
+        video.pause();
     }
 
     function print () {
