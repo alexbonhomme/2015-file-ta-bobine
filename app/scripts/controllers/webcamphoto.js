@@ -150,7 +150,7 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout, $location) {
         // draw video
         splitH(context);
 
-        context.drawImage(video, 149, 117, 392, 245);
+        context.drawImage(video, 124, 132, 392, 245);
 
         splitH(context);
 
@@ -178,6 +178,5 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout, $location) {
             $location.path('/end')
         }, 500);
     }
-
   }
 })();
