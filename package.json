@@ -1,0 +1,9 @@
+{
+  "version": "0.0.1",
+  "name": "file-ta-bobine",
+  "author": "Alexandre Bonhomme",
+  "node-main": "index.js",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
