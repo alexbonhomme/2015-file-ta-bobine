@@ -148,11 +148,7 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout, $location) {
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         // draw video
-        splitH(context);
-
-        context.drawImage(video, 149, 117, 392, 245);
-
-        splitH(context);
+        drawGrayscaleImage(context, video);
 
         // draw mask
         var img = document.getElementById("story-mask");
@@ -162,13 +158,13 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout, $location) {
         photo.setAttribute('src', data);
     }
 
-    function splitH (ctx) {
+    function splitH(ctx) {
         ctx.translate(canvas.width / 2, canvas.height / 2);
         ctx.scale(-1, 1);
         ctx.translate(-canvas.width / 2, -canvas.height / 2);
     }
 
-    function print () {
+    function print() {
         video.pause();
         takepicture();
 
@@ -179,5 +175,26 @@ function WebcamphotoCtrl ($window, $routeParams, $timeout, $location) {
         }, 500);
     }
 
+    function drawGrayscaleImage(ctx, image) {
+        splitH(ctx);
+        ctx.drawImage(image, 124, 132, 392, 245);
+        splitH(ctx);
+
+        var imageData = ctx.getImageData(724, 132, 392, 245);
+        var data = imageData.data;
+
+        for(var i = 0; i < data.length; i += 4) {
+          var brightness = 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
+          // red
+          data[i] = brightness;
+          // green
+          data[i + 1] = brightness;
+          // blue
+          data[i + 2] = brightness;
+        }
+
+        // overwrite original image
+        ctx.putImageData(imageData, 724, 132);
+    }
   }
 })();
